@@ -1,9 +1,9 @@
-import {VisibilityEntityNamePipe} from './visibility-entity-name.pipe';
+import { VisibilityEntityNamePipe } from './visibility-entity-name.pipe';
 import {
     FeedbackParticipantType,
     FeedbackVisibilityType,
-    NumberOfEntitiesToGiveFeedbackToSetting
-} from "../../../types/api-output";
+    NumberOfEntitiesToGiveFeedbackToSetting,
+} from '../../../types/api-output';
 
 describe('VisibilityEntityNamePipe', () => {
   it('create an instance', () => {
@@ -11,29 +11,29 @@ describe('VisibilityEntityNamePipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is ' +
-      'INSTRUCTORS ', () => {
+  it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is '
+      + 'INSTRUCTORS ', () => {
     const pipe: VisibilityEntityNamePipe = new VisibilityEntityNamePipe();
     const result = pipe.transform(FeedbackVisibilityType.RECIPIENT, FeedbackParticipantType.INSTRUCTORS);
     expect(result).toBe('The receiving instructor');
   });
 
-  it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is ' +
-      'STUDENTS', () => {
+  it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is '
+      + 'STUDENTS', () => {
     const pipe: VisibilityEntityNamePipe = new VisibilityEntityNamePipe();
     const result = pipe.transform(FeedbackVisibilityType.RECIPIENT, FeedbackParticipantType.STUDENTS);
     expect(result).toBe('The receiving student');
   });
 
-  it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is ' +
-      'TEAMS', () => {
+  it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is '
+      + 'TEAMS', () => {
     const pipe: VisibilityEntityNamePipe = new VisibilityEntityNamePipe();
     const result = pipe.transform(FeedbackVisibilityType.RECIPIENT, FeedbackParticipantType.TEAMS);
     expect(result).toBe('The receiving team');
   });
 
-    it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is ' +
-        'NONE', () => {
+    it('should return the correct entity name when the visibility type is RECIPIENT and recipient type is '
+        + 'NONE', () => {
         const pipe: VisibilityEntityNamePipe = new VisibilityEntityNamePipe();
         const result = pipe.transform(FeedbackVisibilityType.RECIPIENT, FeedbackParticipantType.NONE);
         expect(result).toBe('unknown');
@@ -63,8 +63,8 @@ describe('VisibilityEntityNamePipe', () => {
         expect(result).toBe("The recipient's team members");
     });
 
-    it('should return plural form of entity name when the visibility type is RECIPIENT and the number of entities ' +
-        'to give feedback to UNLIMITED', () => {
+    it('should return plural form of entity name when the visibility type is RECIPIENT and the number of entities '
+        + 'to give feedback to UNLIMITED', () => {
         const pipe: VisibilityEntityNamePipe = new VisibilityEntityNamePipe();
         const result = pipe.transform(FeedbackVisibilityType.RECIPIENT, FeedbackParticipantType.STUDENTS,
             NumberOfEntitiesToGiveFeedbackToSetting.UNLIMITED);
