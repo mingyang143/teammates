@@ -29,6 +29,7 @@ import { StudentPageComponent } from './pages-student/student-page.component';
 import { PublicPageComponent } from './public-page.component';
 import { environment } from '../environments/environment';
 import { Intent } from '../types/api-request';
+import {DarkModeButtonModule} from "./components/dark-mode-button/dark-mode-button.module";
 
 const customUrlSerializer: CustomUrlSerializer = new CustomUrlSerializer();
 const customUrlSerializerProvider: Provider = {
@@ -155,6 +156,7 @@ if (environment.maintenance) {
     MaintainerPageComponent,
   ],
   imports: [
+    DarkModeButtonModule,
     SimpleModalModule,
     BrowserModule,
     BrowserAnimationsModule,

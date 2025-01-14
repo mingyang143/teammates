@@ -137,3 +137,13 @@ nav {
 button.bg-transparent.btn.btn-link.nav-link:active {
   color: white !important;
 }
+
+.dark-mode {
+  background: #3c3c3c;
+  color: white;
+}
+
+.light-mode {
+  background: white;
+  color: black;
+}
