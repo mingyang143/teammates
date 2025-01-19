@@ -105,7 +105,8 @@ public class CreateFeedbackSessionAction extends Action {
                     createRequest.getGracePeriod(),
                     true,
                     createRequest.isClosingEmailEnabled(),
-                    createRequest.isPublishedEmailEnabled()
+                    createRequest.isPublishedEmailEnabled(),
+                    false
             );
 
             try {

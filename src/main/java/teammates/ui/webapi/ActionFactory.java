@@ -76,6 +76,8 @@ public final class ActionFactory {
         map(ResourceURIs.RESPONSE_COMMENT, DELETE, DeleteFeedbackResponseCommentAction.class);
         map(ResourceURIs.RESULT, GET, GetSessionResultsAction.class);
         map(ResourceURIs.LOGIN_EMAIL, POST, SendLoginEmailAction.class);
+        map(ResourceURIs.SESSION_BOOKMARK, POST, ToggleSessionBookmarkAction.class);
+        map(ResourceURIs.SESSION_BOOKMARK, GET, GetSessionBookmarkAction.class);
 
         //STUDENTS APIs
         map(ResourceURIs.STUDENTS, GET, GetStudentsAction.class);

@@ -89,6 +89,9 @@ public class FeedbackSession extends BaseEntity {
     @Column(nullable = false)
     private boolean isPublishedEmailSent;
 
+    @Column(nullable = false)
+    private boolean isBookmarked;
+
     @OneToMany(mappedBy = "feedbackSession", cascade = CascadeType.REMOVE)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<DeadlineExtension> deadlineExtensions = new ArrayList<>();
@@ -108,7 +111,8 @@ public class FeedbackSession extends BaseEntity {
 
     public FeedbackSession(String name, Course course, String creatorEmail, String instructions, Instant startTime,
             Instant endTime, Instant sessionVisibleFromTime, Instant resultsVisibleFromTime, Duration gracePeriod,
-            boolean isOpeningEmailEnabled, boolean isClosingEmailEnabled, boolean isPublishedEmailEnabled) {
+            boolean isOpeningEmailEnabled, boolean isClosingEmailEnabled, boolean isPublishedEmailEnabled,
+            boolean isBookmarked) {
         this.setId(UUID.randomUUID());
         this.setName(name);
         this.setCourse(course);
@@ -122,6 +126,16 @@ public class FeedbackSession extends BaseEntity {
         this.setOpeningEmailEnabled(isOpeningEmailEnabled);
         this.setClosingEmailEnabled(isClosingEmailEnabled);
         this.setPublishedEmailEnabled(isPublishedEmailEnabled);
+        this.setBookmarked(isBookmarked);
+    }
+
+
+    public boolean isBookmarked() {
+        return isBookmarked;
+    }
+
+    public void setBookmarked(boolean isBookmarked) {
+        this.isBookmarked = isBookmarked;
     }
 
     /**
@@ -149,7 +163,7 @@ public class FeedbackSession extends BaseEntity {
         FeedbackSession fs = new FeedbackSession(
                 name, course, creatorEmail, instructions, startTime,
                 endTime, sessionVisibleFromTime, resultsVisibleFromTime,
-                gracePeriod, isOpeningEmailEnabled, isClosingEmailEnabled, isPublishedEmailEnabled
+                gracePeriod, isOpeningEmailEnabled, isClosingEmailEnabled, isPublishedEmailEnabled, isBookmarked
         );
         fs.setId(getId());
         fs.setCreatedAt(getCreatedAt());
@@ -412,7 +426,7 @@ public class FeedbackSession extends BaseEntity {
                 + ", isClosingSoonEmailSent=" + isClosingSoonEmailSent + ", isClosedEmailSent=" + isClosedEmailSent
                 + ", isPublishedEmailSent=" + isPublishedEmailSent + ", deadlineExtensions=" + deadlineExtensions
                 + ", feedbackQuestions=" + feedbackQuestions + ", createdAt=" + getCreatedAt()
-                + ", updatedAt=" + updatedAt + ", deletedAt=" + deletedAt + "]";
+                + ", updatedAt=" + updatedAt + ", deletedAt=" + deletedAt + ", isBookmarked=" + isBookmarked + "]";
     }
 
     @Override
